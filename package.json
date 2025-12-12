@@ -8,5 +8,10 @@
     "name": "SilentBenjiNinja",
     "email": "silentbenjininja@github.com"
   },
-  "licensesUrl": "https://www.gnu.org/licenses/gpl-3.0.en.html"
+  "licensesUrl": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+  "dependencies": {
+    "com.bnj.object-pooler": "1.0.0",
+    "com.bnj.so-manager": "1.0.4",
+    "com.bnj.utility-toolkit": "1.0.0"
+  }
 }

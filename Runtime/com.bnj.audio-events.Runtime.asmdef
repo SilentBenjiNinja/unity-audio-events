@@ -1,0 +1,18 @@
+{
+    "name": "com.bnj.audio-events.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:409e8ead0ea45f844b4f007fc9600651",
+        "GUID:a8192b6e748966745be9a43ef541b566",
+        "GUID:a3de4d573279d50459cf76773b9d26fa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
