@@ -1,0 +1,19 @@
+{
+    "name": "com.bnj.audio-events.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4f4d1bc944aeb5e419e6e9d0ee0919f3",
+        "GUID:409e8ead0ea45f844b4f007fc9600651"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,8 +1,8 @@
 {
   "name": "com.bnj.audio-events",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "BNJ - Audio Events",
-  "description": "This is the lovely description to this very useful package.",
+  "description": "* Provides object pooling for audio sources\r\n* Use audio event SOs to set up variety in pitch, volume & audio clip for events\r\n* Limits how many sounds of the same origin can be played at once and at which interval",
   "unity": "2020.3",
   "author": {
     "name": "SilentBenjiNinja",
