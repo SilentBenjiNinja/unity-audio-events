@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using bnj.object_pooler.Runtime;
-using bnj.utility_toolkit.Runtime;
+using bnj.utility_toolkit.Runtime.Coroutines;
 using UnityEngine;
 
 namespace bnj.audio_events.Runtime

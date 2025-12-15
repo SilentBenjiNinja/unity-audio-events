@@ -1,6 +1,6 @@
 {
   "name": "com.bnj.audio-events",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "BNJ - Audio Events",
   "description": "* Provides object pooling for audio sources\r\n* Use audio event SOs to set up variety in pitch, volume & audio clip for events\r\n* Limits how many sounds of the same origin can be played at once and at which interval",
   "unity": "2020.3",
@@ -10,8 +10,8 @@
   },
   "licensesUrl": "https://www.gnu.org/licenses/gpl-3.0.en.html",
   "dependencies": {
-    "com.bnj.object-pooler": "1.0.0",
-    "com.bnj.so-manager": "1.0.4",
-    "com.bnj.utility-toolkit": "1.0.0"
+    "com.bnj.object-pooler": "1.0.1",
+    "com.bnj.so-manager": "1.0.7",
+    "com.bnj.utility-toolkit": "1.1.0"
   }
 }

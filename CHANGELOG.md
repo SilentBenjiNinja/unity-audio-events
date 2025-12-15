@@ -1,6 +1,11 @@
+# 1.0.3
+
+* Bump dependency versions
+* Update to utility-toolkit 1.1.0
+
 # 1.0.2
 
-* Updated README \& package description
+* Updated README & package description
 * Move attribution to third party notices
 * Add game object menu + prefab for easier setup
 
