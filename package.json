@@ -1,8 +1,8 @@
 {
   "name": "com.bnj.audio-events",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "displayName": "BNJ - Audio Events",
-  "description": "* Provides object pooling for audio sources\r\n* Use audio event SOs to set up variety in pitch, volume & audio clip for events\r\n* Limits how many sounds of the same origin can be played at once and at which interval",
+  "description": "A decoupled audio system built on the Message Bus pattern. Define audio events as ScriptableObjects with randomized pitch/volume variation, clip pools, and AudioMixer routing. Manages playback through a pooled AudioSource spawner with per-event concurrency limits, cooldowns, and owner-tracked source cleanup.",
   "unity": "2020.3",
   "author": {
     "name": "SilentBenjiNinja",
