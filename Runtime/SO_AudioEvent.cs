@@ -1,26 +1,24 @@
-using System;
-using System.Collections.Generic;
 using bnj.so_manager.Runtime;
-using bnj.utility_toolkit.Runtime;
-using bnj.utility_toolkit.Runtime.Audio;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Audio;
 
-// TODO: add button to preview audio event (toggles play and stop)
-// (Instantiate audio source, play and remove it again)
 // https://discussions.unity.com/t/way-to-play-audio-in-editor-using-an-editor-script/473638/20
-// Also check out https://docs.unity3d.com/6000.0/Documentation/Manual/AudioRandomContainer-UI.html
 namespace bnj.audio_events.Runtime
 {
     /// <summary>
-    /// ScriptableObject that defines an audio event with randomized variation, concurrency limits, and pooled playback.
+    /// ScriptableObject that defines an audio event with concurrency limits and pooled playback.
+    /// Accepts any <see cref="AudioResource"/> — assign an <see cref="AudioClip"/> or an
+    /// <see cref="AudioRandomContainer"/> for built-in variation.
     /// Create via <c>Create &gt; BNJ &gt; Audio Event</c> and trigger via <see cref="AudioEventsMessageBus.PlayAudioEvent"/>.
     /// </summary>
     [HideMonoScript, ManageableData("Audio Events", Order = 1000)]
     [CreateAssetMenu(menuName = "BNJ/Audio Event", fileName = "AE_", order = 90)]
     public class SO_AudioEvent : ScriptableObject
     {
+        [SerializeField, Required, LabelText("Audio")]
+        AudioResource _audioResource;
+
         [BoxGroup("Mix")]
         [HorizontalGroup("Mix/H", Width = 90)]
         [SerializeField, ToggleLeft, LabelText("Spatial (3D)")]
@@ -39,18 +37,6 @@ namespace bnj.audio_events.Runtime
         AudioMixerGroup _mixerChannel;
         /// <summary>The <see cref="AudioMixerGroup"/> this event is routed through.</summary>
         public AudioMixerGroup MixerChannel => _mixerChannel;
-
-        [BoxGroup("Variations")]
-        [SerializeField, LabelWidth(60), MinMaxSlider(0, 1, true)]
-        Vector2 _volume = new(.8f, 1);
-        /// <summary>Returns a random volume value sampled from the configured min/max range, clamped to 0–1.</summary>
-        public float RandomizedVolume => RandomUtils.RandomFloatBetween(_volume.x, _volume.y).Clamp01();
-
-        [BoxGroup("Variations")]
-        [SerializeField, LabelWidth(60), MinMaxSlider(-3, 3, true)]
-        Vector2 _pitch = new(.9f, 1.1f);
-        /// <summary>Returns a random pitch value sampled from the configured min/max range, clamped to valid pitch bounds.</summary>
-        public float RandomizedPitch => RandomUtils.RandomFloatBetween(_pitch.x, _pitch.y).Clamp(AudioUtils.MIN_PITCH, AudioUtils.MAX_PITCH);
 
         [BoxGroup("Limitations")]
         [HorizontalGroup("Limitations/H")]
@@ -72,9 +58,18 @@ namespace bnj.audio_events.Runtime
         /// <summary>Minimum seconds that must pass before this event can be triggered again.</summary>
         public float Cooldown => _cooldown;
 
-        [ListDrawerSettings(ShowFoldout = false, ShowPaging = false, ShowItemCount = false)]
-        [SerializeField] List<AudioClip> _audioClipPool;
-        /// <summary>Returns a randomly selected <see cref="AudioClip"/> from the configured clip pool.</summary>
-        public AudioClip RandomClipFromPool => _audioClipPool[RandomUtils.RandomIntBetween(0, _audioClipPool.Count)];
+        /// <summary>
+        /// Applies this event's <see cref="AudioResource"/> and all mix settings to the given <see cref="AudioSource"/>.
+        /// Called by <see cref="MB_AudioSourceSpawner"/> before playing.
+        /// </summary>
+        public void Apply(AudioSource source)
+        {
+            source.resource = _audioResource;
+            source.outputAudioMixerGroup = _mixerChannel;
+            source.spatialBlend = _isSpatial ? 1 : 0;
+            source.reverbZoneMix = _isSpatial ? 1 : 0;
+            source.priority = _priority;
+            source.loop = _loop;
+        }
     }
 }

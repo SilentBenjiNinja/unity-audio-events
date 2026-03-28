@@ -1,11 +1,17 @@
 # Audio Events for Unity
 
 Provides a lightweight, decoupled audio system built on ScriptableObject events and pooled audio sources.
+Assign a plain `AudioClip` or an `AudioRandomContainer` to any audio event for built-in Unity 6 variation.
+
+## Requirements
+
+- Unity 6 (2023.2+)
+- For Unity 2020.3–2022.3 use version 2.x
 
 ## Features
 
+- **`AudioResource` support** — assign an `AudioClip` or `AudioRandomContainer` per event
 - **Pooled audio sources** — no `Instantiate`/`Destroy` overhead per sound
-- **SO-based audio events** — configure pitch/volume variation, clip pool, mixing, looping, and priority in one asset
 - **Concurrency limiting** — cap how many instances of the same event play simultaneously
 - **Cooldown support** — enforce a minimum re-trigger interval per event
 - **Source tracking** — stop all audio from a specific owner with one call
@@ -31,15 +37,13 @@ Configure the event in the Inspector:
 
 | Field | Description |
 |---|---|
+| **Audio** | An `AudioClip` or `AudioRandomContainer` to play |
 | **Spatial (3D)** | Whether audio attenuates with distance |
 | **Loop** | Whether the audio source loops |
 | **Mixer Channel** | The `AudioMixerGroup` to route through |
-| **Volume** | Min/max range — a random value is sampled per play |
-| **Pitch** | Min/max range — a random value is sampled per play |
 | **Priority** | Source priority (0 = highest, 256 = lowest) |
 | **Max Active** | Maximum simultaneous instances of this event |
 | **Cooldown** | Minimum seconds between re-triggers |
-| **Clip Pool** | List of clips — one is chosen at random each play |
 
 ### 3. Trigger events at runtime
 

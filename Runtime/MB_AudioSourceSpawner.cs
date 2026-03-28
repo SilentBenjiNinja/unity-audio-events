@@ -59,52 +59,27 @@ namespace bnj.audio_events.Runtime
             var audioSource = NextFromPool;
             audioSource.transform.position = location;
 
-            Coroutine coroutine;
-
             PopulateAndPlayAudioSource();
 
-            if (audioEvent.Loop)
-            {
-                //coroutine = RepeatInvoke(
-                //    () => PopulateAndPlayAudioSource(true),
-                //    new WaitForSeconds(GetClipDuration())
-                //);
-            }
-            else
-                coroutine = this.DelayInvoke(
+            if (!audioEvent.Loop)
+                this.DelayInvokeUntil(
                     () => StopAudioSource((audioSource, audioEventHashed), source),
-                    GetClipDuration()
+                    () => !audioSource.isPlaying
                 );
 
             if (source == null) return;
 
             if (!_sourceLookup.ContainsKey(source)) _sourceLookup[source] = new();
 
-            _sourceLookup[source].Add((audioSource, audioEventHashed/*, coroutine*/));
+            _sourceLookup[source].Add((audioSource, audioEventHashed));
 
-            void PopulateAndPlayAudioSource(bool isRepeating = false)
+            void PopulateAndPlayAudioSource()
             {
-                audioSource.clip = audioEvent.RandomClipFromPool;
-                audioSource.outputAudioMixerGroup = audioEvent.MixerChannel;
-                audioSource.spatialBlend = audioEvent.IsSpatial ? 1 : 0;
-                audioSource.reverbZoneMix = audioEvent.IsSpatial ? 1 : 0;
-                audioSource.volume = audioEvent.RandomizedVolume;
-                audioSource.pitch = audioEvent.RandomizedPitch;
-                audioSource.priority = audioEvent.Priority;
-                audioSource.loop = audioEvent.Loop;
-                //audioSource.gameObject.name = audioEvent.GetHashCode().ToString();
-
+                audioEvent.Apply(audioSource);
                 audioSource.gameObject.SetActive(true);
                 audioSource.Play();
-
-                if (isRepeating) return;
-
                 _currentlyPlayingAudioEvents.Add(audioEventHashed);
             }
-
-            // TODO: on loop play different clip from pool?
-            float GetClipDuration() =>
-                audioSource.clip.length / audioSource.pitch;
         }
 
         void StopAudioEventsFromSource(object source)

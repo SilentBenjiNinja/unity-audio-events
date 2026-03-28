@@ -1,3 +1,19 @@
+# 3.0.0
+
+> Requires Unity 6 (2023.2+). For Unity 2020.3–2022.3 support stay on 2.x.
+
+### Breaking Changes
+
+* Removed volume/pitch randomization and clip pool from `SO_AudioEvent` — use `AudioRandomContainer` for variation
+* `SO_AudioEvent` now exposes a single `AudioResource` field (accepts `AudioClip` or `AudioRandomContainer`)
+* Spawner cleanup now polls `AudioSource.isPlaying` instead of estimating clip duration
+
+### New
+
+* `SO_AudioEvent.Apply(AudioSource)` centralises all AudioSource configuration
+
+---
+
 # 2.0.0
 
 ### Breaking Changes
