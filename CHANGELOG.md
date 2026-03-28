@@ -1,3 +1,15 @@
+# 4.0.0
+
+### Breaking Changes
+
+* Removed public properties `IsSpatial`, `MixerChannel`, and `Priority` from `SO_AudioEvent` — these are internal to `Apply` and no longer part of the public API
+
+### Improvements
+
+* Odin Inspector is now optional — all Odin attributes in `SO_AudioEvent` are guarded by `#if ODIN_INSPECTOR`
+
+---
+
 # 3.0.0
 
 > Requires Unity 6 (2023.2+). For Unity 2020.3–2022.3 support stay on 2.x.
@@ -10,7 +22,7 @@
 
 ### New
 
-* `SO_AudioEvent.Apply(AudioSource)` centralises all AudioSource configuration
+* `SO_AudioEvent.Apply(AudioSource)` centralises all `AudioSource` configuration
 
 ---
 

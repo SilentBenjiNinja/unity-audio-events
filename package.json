@@ -1,6 +1,6 @@
 {
   "name": "com.bnj.audio-events",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "displayName": "BNJ - Audio Events",
   "description": "A decoupled audio system built on the Message Bus pattern. Define audio events as ScriptableObjects backed by any AudioResource — assign a plain AudioClip or an AudioRandomContainer for built-in variation. Manages playback through a pooled AudioSource spawner with per-event concurrency limits, cooldowns, and owner-tracked source cleanup.",
   "unity": "6.0",
@@ -10,7 +10,7 @@
   },
   "licensesUrl": "https://www.gnu.org/licenses/gpl-3.0.en.html",
   "dependencies": {
-    "com.bnj.object-pooler": "1.0.1",
+    "com.bnj.object-pooler": "1.1.0",
     "com.bnj.so-manager": "1.0.7",
     "com.bnj.utility-toolkit": "1.1.0"
   }
