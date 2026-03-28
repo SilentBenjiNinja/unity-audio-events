@@ -6,6 +6,11 @@ using UnityEngine;
 
 namespace bnj.audio_events.Runtime
 {
+    /// <summary>
+    /// Scene-level MonoBehaviour that listens to <see cref="AudioEventsMessageBus"/> and manages
+    /// a pool of <see cref="AudioSource"/> instances for decoupled audio playback.
+    /// Add one per scene via <c>[+] &gt; BNJ &gt; Audio Events &gt; Audio Source Spawner</c>.
+    /// </summary>
     [AddComponentMenu("BNJ/Audio Source Spawner")]
     public class MB_AudioSourceSpawner : MB_ObjectPooler<AudioSource>
     {
@@ -16,14 +21,14 @@ namespace bnj.audio_events.Runtime
 
         void OnEnable()
         {
-            AudioMessageBoard.PlayAudioEvent += PlayAudioEvent;
-            AudioMessageBoard.StopAudioEventsFromSource += StopAudioEventsFromSource;
+            AudioEventsMessageBus.PlayAudioEvent += PlayAudioEvent;
+            AudioEventsMessageBus.StopAudioEventsFromSource += StopAudioEventsFromSource;
         }
 
         void OnDisable()
         {
-            AudioMessageBoard.PlayAudioEvent -= PlayAudioEvent;
-            AudioMessageBoard.StopAudioEventsFromSource -= StopAudioEventsFromSource;
+            AudioEventsMessageBus.PlayAudioEvent -= PlayAudioEvent;
+            AudioEventsMessageBus.StopAudioEventsFromSource -= StopAudioEventsFromSource;
         }
 
         void PlayAudioEvent(SO_AudioEvent audioEvent, Vector3 location, object source)
