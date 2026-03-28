@@ -1,9 +1,11 @@
-using bnj.so_manager.Runtime;
 using UnityEngine;
 using UnityEngine.Audio;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
+#endif
+#if SO_MANAGER
+using bnj.so_manager.Runtime;
 #endif
 
 namespace bnj.audio_events.Runtime
@@ -17,7 +19,9 @@ namespace bnj.audio_events.Runtime
 #if ODIN_INSPECTOR
     [HideMonoScript]
 #endif
+    #if SO_MANAGER
     [ManageableData("Audio Events", Order = 1000)]
+#endif
     [CreateAssetMenu(menuName = "BNJ/Audio Event", fileName = "AE_", order = 90)]
     public class SO_AudioEvent : ScriptableObject
     {

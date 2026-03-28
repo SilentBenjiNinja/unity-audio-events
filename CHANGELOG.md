@@ -1,3 +1,11 @@
+# 5.0.0
+
+### Breaking Changes
+
+* `com.bnj.so-manager` is no longer a hard dependency — `[ManageableData]` on `SO_AudioEvent` is now guarded by `#if SO_MANAGER`, which is defined automatically when so-manager is installed
+
+---
+
 # 4.0.0
 
 ### Breaking Changes
