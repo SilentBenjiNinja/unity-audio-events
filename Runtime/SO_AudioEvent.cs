@@ -26,7 +26,7 @@ namespace bnj.audio_events.Runtime
     public class SO_AudioEvent : ScriptableObject
     {
 #if ODIN_INSPECTOR
-        [Required, LabelText("Audio")]
+        [Required, HideLabel]
 #endif
         [SerializeField] AudioResource _audioResource;
 
