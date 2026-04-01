@@ -1,6 +1,6 @@
 {
   "name": "com.bnj.audio-events",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "displayName": "BNJ - Audio Events",
   "description": "A decoupled audio system built on the Message Bus pattern. Define audio events as ScriptableObjects backed by any AudioResource — assign a plain AudioClip or an AudioRandomContainer for built-in variation. Manages playback through a pooled AudioSource spawner with per-event concurrency limits, cooldowns, and owner-tracked source cleanup.",
   "unity": "6.0",
