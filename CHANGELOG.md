@@ -3,6 +3,7 @@
 ### Improvements
 
 * Assembly definition references switched from GUID to name-based — ensures references resolve correctly when the package is installed via UPM or Git submodule
+* Remove field label for AudioResource in SO_AudioEvent (Odin only) - it is pretty self-explanatory
 
 ---
 
