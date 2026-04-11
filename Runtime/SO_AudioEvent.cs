@@ -19,7 +19,7 @@ namespace bnj.audio_events.Runtime
 #if ODIN_INSPECTOR
     [HideMonoScript]
 #endif
-    #if SO_MANAGER
+#if SO_MANAGER
     [ManageableData("Audio Events", Order = 1000)]
 #endif
     [CreateAssetMenu(menuName = "BNJ/Audio Event", fileName = "AE_", order = 90)]
